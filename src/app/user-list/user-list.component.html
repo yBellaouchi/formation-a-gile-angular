@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+  <table id="myTable" class="table table-bordered table-striped " class="col-sm-8">
+    <thead>
+      <th>id</th>
+      <th>email</th>
+      <th>password</th>
+      <th>role</th>
+      <th>action</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.password}}</td>
+            <td>{{user.role}}</td>
+            <td>
+              <button class=''  ><span class='glyphicon glyphicon-edit'></span> Edit</button>
+              <button class='btn btn-danger btn-sm' ><span class='glyphicon glyphicon-trash' ></span> Delete</button>
+            </td>
+          </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>

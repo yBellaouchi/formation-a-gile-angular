@@ -1,0 +1,100 @@
+
+
+<div class="formbold-main-wrapper">
+                
+              
+  <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="formbold-form-title">
+        <h2 class="">Add Project</h2>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <label for="firstname" class="formbold-form-label">
+              Nom du projet
+          </label>
+          <input
+            type="text"
+            name="firstname"
+            id="firstname"
+            class="formbold-form-input"
+            formControlName="nameProject"
+          />
+        </div>
+        <div>
+          <label for="Nom opportunite " class="formbold-form-label"> Nom opportunite </label>
+          <input
+            type="text"
+            name="lastname"
+            id="lastname"
+            class="formbold-form-input"
+            formControlName="nameOpportunity"
+          />
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <label for="email" class="formbold-form-label"> Reference client </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="formbold-form-input"
+            formControlName="referenceClient"
+          />
+        </div>
+        <div>
+          <label for="phone" class="formbold-form-label"> Status </label>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            class="formbold-form-input"
+            formControlName="status"
+          />
+        </div>
+      </div>
+
+      <div class="formbold-mb-3">
+        <label for="address" class="formbold-form-label">
+          Desecription
+        </label>
+        <input
+          type="text"
+          name="address"
+          id="address"
+          class="formbold-form-input"
+          formControlName="description"
+        />
+      </div>
+      <div class="formbold-input-flex">
+        
+        <div>
+          <label for="country" class="formbold-form-label"> Montant prestation </label>
+          <input
+            type="text"
+            name="country"
+            id="country"
+            class="formbold-form-input"
+            formControlName="montantPrestation"
+          />
+        </div>
+        <div>
+          <label for="post" class="formbold-form-label"> Volume restant MWhc </label>
+          <input
+            type="text"
+            name="post"
+            id="post"
+            class="formbold-form-input"
+            formControlName="volumeRestant"
+          />
+        </div>
+        
+      </div>
+        <button class="formbold-btn" [disabled]="form.invalid">Add </button>
+      
+
+      
+    </form>
+  </div>
