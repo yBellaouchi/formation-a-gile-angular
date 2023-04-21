@@ -22,7 +22,6 @@ export class ShowComponent implements OnInit {
         next : (data) =>{
           this.projet =data['element'];
           console.log(this.projet);
-          console.log(data['element']['Nom du projet']);
         },
         error: (error) => {
           if (error['error']['message'] === "Expired JWT Token") {

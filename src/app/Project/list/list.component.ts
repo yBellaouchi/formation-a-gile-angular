@@ -13,13 +13,11 @@ export class ListComponent implements OnInit {
   projets !: [];
   msg !: string;
   // form:FormGroup;
-  constructor(private formBuilder: FormBuilder, private service: ProjectService, public router: Router) {
+  constructor( private service: ProjectService, public router: Router) {
   }
   ngOnInit(): void {
     this.getAll();
   }
- 
-
   getAll() {
     let elementType = "Projets";
     this.service.getAllProjects(elementType).subscribe({
@@ -35,13 +33,14 @@ export class ListComponent implements OnInit {
       }
     });
   }
-  delete(id:any){
-    console.log(id);
+  delete(id:any) {
+    console.log(this.projets);
+    let i = this.projets.findIndex(x => x['projetsid'] === id);
     this.service.delete(id).subscribe({
-      next:(data) =>{
-        console.log(data);
-        this.router.navigate(['/projets'])
-      },
+      next:(data) => {
+        console.log(data); 
+        this.projets.splice(i,1);
+       },
       error: (error) => {
         if (error['error']['message'] === "Expired JWT Token") {
           this.service.redirectToLogin();
@@ -49,10 +48,10 @@ export class ListComponent implements OnInit {
       }
     })
   }
-  update( id:any){
+  update( id:any) {
     this.router.navigateByUrl('/update', { state: { id:id} });
   }
-  details( id:any){
+  details( id:any) {
     this.router.navigateByUrl('/details', { state: { id:id } });
   }
 
