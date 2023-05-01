@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   hide: boolean = false;
   toke:any;
+  isLogged!:boolean;
   constructor(private fb: FormBuilder, private service:ProjectService, private router:Router) {
   }
 
@@ -36,10 +37,11 @@ export class LoginComponent implements OnInit {
         next :(data)=>{
           if(data!= null){
             localStorage.setItem('token', data['token']);
+            localStorage.setItem('isLogged','true');
+            this.router.navigate(['/projets']);
           }
-         console.log(data);
-         console.log(data['token']);
          this.router.navigate(['/projets']);
+         
         }
       });
     }

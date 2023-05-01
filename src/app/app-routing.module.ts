@@ -7,68 +7,50 @@ import { UserListComponent } from './user-list/user-list.component';
 import { ShowComponent } from './Project/details/show.component';
 import { AddComponent } from './Project/add/add.component';
 import { UpdateComponent } from './Project/update/update.component';
+import { MercureComponent } from './mercure/mercure.component';
 // import { ShowComponent } from './Project/show/show.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: AppComponent,
-    children: [
-      {
+   
         path: '',
         component: LoginComponent
-      }
-    ]
+     
   },
   {
-    path: '',
-    component: AppComponent,
-    children: [
-      {
         path: 'details',
         component: ShowComponent
-      }
-    ]
+     
   },
   {
-    path: '',
-    component: AppComponent,
-    children: [
-      {
+   
         path: 'users',
         component: UserListComponent
-      }
-    ]
+     
   },
   {
-    path: '',
-    component: AppComponent,
-    children: [
-      {
+
         path: 'projets',
         component: ListComponent
-      }
-    ]
+     
   },
   {
-    path: '',
-    component: AppComponent,
-    children: [
-      {
+    
         path: 'add',
         component: AddComponent
-      }
-    ]
+      
   },
   {
-    path: '',
-    component: AppComponent,
-    children: [
-      {
+    
         path: 'update',
         component: UpdateComponent
-      }
-    ]
+      
+  },
+  {
+    
+        path: 'mercure',
+        component: MercureComponent
+      
   }
 
 ];

@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+// import { SSE } from 'sse.js';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment'
+import { environment } from 'src/environments/environment';
+// import { SSE } from 'sse.js';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +12,14 @@ import { environment } from 'src/environments/environment'
 export class ProjectService {
    token!: string;
   apiURL !:string;
+  isLogged!: boolean;
+  // eventSource: SSE;
   constructor(private http: HttpClient, private router:Router) {
     this.token = this.getToken();
     this.apiURL = environment.apiURL;
+    
   }
+ 
 
   getToken() {
     return ("bearer " + localStorage.getItem('token'));
@@ -29,6 +35,12 @@ export class ProjectService {
   }
 
   redirectToLogin() {
+    return this.router.navigate(['/']);
+  }
+  Logout() {
+    console.log(localStorage.getItem('token'));
+    localStorage.removeItem('token');
+    localStorage.removeItem('isLogged');
     return this.router.navigate(['/']);
   }
 
@@ -54,6 +66,27 @@ export class ProjectService {
     return this.http.get(this.apiURL+"/delete", {params: new HttpParams().set("id", id)} );
     // return this.http.get(this.apiURL+"/delete", {'id': id } );
   }
+  notify(): Observable<any> {
+    
+    return this.http.get("https://127.0.0.1:8000/test/service/publish")
+    // console.log(this.http.get("https://127.0.0.1:8000/test/service/publish"));
+    // return this.http.get("https://127.0.0.1:8000/test/service/publish");
+    // return this.http.get(this.apiURL+"/delete", {'id': id } );
+  }
 
+  getServerSentEvent(){
+  const eventSource = new EventSource('http://localhost:3000/.well-known/mercure?topic=chat');
+ console.log(eventSource);
+
+   eventSource.onmessage = event =>{
+        console.log("success" , event);
+        console.log((JSON.parse(event.data)).status)
+        localStorage.setItem('message',(JSON.parse(event.data)).status)
+        
+      }
+      eventSource.onerror = event =>{
+        console.log("error" , event);
+      }
+  }
 
 }

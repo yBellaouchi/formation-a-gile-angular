@@ -17,6 +17,7 @@ import { ShowComponent } from './Project/details/show.component';
 import { tokenInterceptorService } from './service/token-interceptor.service';
 import { AddComponent } from './Project/add/add.component';
 import { UpdateComponent } from './Project/update/update.component';
+import { MercureComponent } from './mercure/mercure.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UpdateComponent } from './Project/update/update.component';
     ShowComponent,
     AddComponent,
     UpdateComponent,
+    MercureComponent,
   ], 
   imports: [
     BrowserModule,

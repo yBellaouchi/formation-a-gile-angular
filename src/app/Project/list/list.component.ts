@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/service/project.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -24,10 +22,12 @@ export class ListComponent implements OnInit {
       next: (data) => {
         this.projets = data['all projects'];
         console.log(data['all projects']);
+        
+        
       },
       error: (error) => {
         console.log(error);
-        if (error['error']['message'] === "Expired JWT Token") {
+        if (error['error']['message'].includes(" JWT Token")) {
           this.service.redirectToLogin();
         }
       }
